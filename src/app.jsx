@@ -1,5 +1,8 @@
+import Habit from "./components/habit";
+import "./app.css";
+
 function App() {
-  return <div>시작</div>;
+  return <Habit />;
 }
 
 export default App;
