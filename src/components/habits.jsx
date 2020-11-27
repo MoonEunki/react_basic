@@ -3,32 +3,34 @@ import Habit from "./habit";
 import HabitAddForm from "./habitAddForm";
 
 const Habits = (props) => {
+  console.log("Habits");
+  const { habits, onAdd, onIncrement, onDecrement, onDelete, onReset } = props;
   const handleIncrement = (habit) => {
-    props.onIncrement(habit);
+    onIncrement(habit);
   };
 
   const handleDecrement = (habit) => {
-    props.onDecrement(habit);
+    onDecrement(habit);
   };
 
   const handleDelete = (habit) => {
-    props.onDelete(habit);
+    onDelete(habit);
   };
 
   const handleAdd = (name) => {
     // console.log("추가할이름" + name);
-    props.onAdd(name);
+    onAdd(name);
   };
 
   const handleReset = () => {
-    props.onReset();
+    onReset();
   };
 
   return (
-    <>
+    <div>
       <HabitAddForm onAdd={handleAdd} />
       <ul>
-        {props.habits.map((habit) => (
+        {habits.map((habit) => (
           <Habit
             key={habit.id}
             habit={habit}
@@ -41,7 +43,7 @@ const Habits = (props) => {
       <button className="habits-reset" onClick={handleReset}>
         Reset All
       </button>
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Navbar = (props) => {
-  console.log(props);
+const Navbar = memo((props) => {
+  console.log("Navbar");
   return (
     <nav className="navbar">
       <i className="navbar-logo fas fa-leaf"></i>
@@ -9,6 +9,6 @@ const Navbar = (props) => {
       <span className="navbar-count">{props.totalCount}</span>
     </nav>
   );
-};
+});
 
 export default Navbar;

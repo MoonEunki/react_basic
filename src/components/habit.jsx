@@ -1,20 +1,22 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Habit = (props) => {
+const Habit = memo(({ habit, onIncrement, onDecrement, onDelete }) => {
+  console.log("Habit:" + habit.name);
+
   const handleIncrement = () => {
-    props.onIncrement(props.habit);
+    onIncrement(habit);
   };
   const handleDecrement = () => {
-    props.onDecrement(props.habit);
+    onDecrement(habit);
   };
   const handleDelete = () => {
-    props.onDelete(props.habit);
+    onDelete(habit);
   };
 
   return (
     <li className="habit">
-      <span className="habit-name">{props.habit.name}</span>
-      <span className="habit-count">{props.habit.count}</span>
+      <span className="habit-name">{habit.name}</span>
+      <span className="habit-count">{habit.count}</span>
       <button className="habit-button habit-increase" onClick={handleIncrement}>
         <i className="fas fa-plus-square"></i>
       </button>
@@ -28,6 +30,5 @@ const Habit = (props) => {
       </button>
     </li>
   );
-};
-
+});
 export default Habit;

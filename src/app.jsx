@@ -4,15 +4,25 @@ import React, { useState } from "react";
 import Navbar from "./components/navbar";
 
 const App = () => {
+  console.log("------------------------------");
+  console.log("App");
+
   const [habits, setCount] = useState([
-    { id: 1, name: "노드", count: 2 },
-    { id: 2, name: "리액트", count: 2 },
+    { id: 1, name: "노드", count: 0 },
+    { id: 2, name: "리액트", count: 0 },
     { id: 3, name: "알고리즘", count: 2 },
   ]);
   const handleIncrement = (habit) => {
-    const newHabits = [...habits];
-    const index = newHabits.indexOf(habit);
-    newHabits[index].count++;
+    const newHabits = habits.map((item) => {
+      if (item.id === habit.id) {
+        return { ...habit, count: habit.count + 1 };
+      }
+      return item;
+    });
+
+    // const newHabits = [...habits];
+    // const index = newHabits.indexOf(habit);
+    // newHabits[index].count++;
     setCount(newHabits);
   };
 
@@ -46,7 +56,7 @@ const App = () => {
     setCount(newHabits);
   };
   return (
-    <>
+    <div>
       <Navbar totalCount={habits.filter((item) => item.count > 0).length} />
       <Habits
         habits={habits}
@@ -56,7 +66,7 @@ const App = () => {
         onDelete={handleDelete}
         onReset={handleReset}
       />
-    </>
+    </div>
   );
 };
 
