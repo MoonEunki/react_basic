@@ -20,6 +20,10 @@ const Habits = (props) => {
     props.onAdd(name);
   };
 
+  const handleReset = () => {
+    props.onReset();
+  };
+
   return (
     <>
       <HabitAddForm onAdd={handleAdd} />
@@ -34,6 +38,9 @@ const Habits = (props) => {
           />
         ))}
       </ul>
+      <button className="habits-reset" onClick={handleReset}>
+        Reset All
+      </button>
     </>
   );
 };

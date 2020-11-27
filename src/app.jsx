@@ -34,6 +34,14 @@ const App = () => {
     // newHabits.push({ id: Date.now(), name: name, count: 0 });
 
     const newHabits = [...habits, { id: Date.now(), name, count: 0 }];
+    setCount(newHabits);
+  };
+
+  const handleReset = () => {
+    const newHabits = habits.map((item) => {
+      item.count = 0;
+      return item;
+    });
 
     setCount(newHabits);
   };
@@ -46,6 +54,7 @@ const App = () => {
         onIncrement={handleIncrement}
         onDecrement={handleDecrement}
         onDelete={handleDelete}
+        onReset={handleReset}
       />
     </>
   );
