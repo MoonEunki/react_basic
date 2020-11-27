@@ -28,11 +28,21 @@ const App = () => {
     const newHabits = habits.filter((item) => item.id !== habit.id);
     setCount(newHabits);
   };
+
+  const handleAdd = (name) => {
+    // const newHabits = [...habits];
+    // newHabits.push({ id: Date.now(), name: name, count: 0 });
+
+    const newHabits = [...habits, { id: Date.now(), name, count: 0 }];
+
+    setCount(newHabits);
+  };
   return (
     <>
       <Navbar totalCount={habits.filter((item) => item.count > 0).length} />
       <Habits
         habits={habits}
+        onAdd={handleAdd}
         onIncrement={handleIncrement}
         onDecrement={handleDecrement}
         onDelete={handleDelete}

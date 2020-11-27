@@ -1,5 +1,6 @@
 import React from "react";
 import Habit from "./habit";
+import HabitAddForm from "./habitAddForm";
 
 const Habits = (props) => {
   const handleIncrement = (habit) => {
@@ -14,10 +15,16 @@ const Habits = (props) => {
     props.onDelete(habit);
   };
 
+  const handleAdd = (name) => {
+    // console.log("추가할이름" + name);
+    props.onAdd(name);
+  };
+
   return (
-    <ul>
-      {props.habits.map((habit) => {
-        return (
+    <>
+      <HabitAddForm onAdd={handleAdd} />
+      <ul>
+        {props.habits.map((habit) => (
           <Habit
             key={habit.id}
             habit={habit}
@@ -25,9 +32,9 @@ const Habits = (props) => {
             onDecrement={handleDecrement}
             onDelete={handleDelete}
           />
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+    </>
   );
 };
 
