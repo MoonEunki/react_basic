@@ -1,6 +1,7 @@
 import "./app.css";
 import Habits from "./components/habits";
 import React, { useState } from "react";
+import Navbar from "./components/navbar";
 
 const App = () => {
   const [habits, setCount] = useState([
@@ -28,12 +29,15 @@ const App = () => {
     setCount(newHabits);
   };
   return (
-    <Habits
-      habits={habits}
-      onIncrement={handleIncrement}
-      onDecrement={handleDecrement}
-      onDelete={handleDelete}
-    />
+    <>
+      <Navbar totalCount={habits.filter((item) => item.count > 0).length} />
+      <Habits
+        habits={habits}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
+        onDelete={handleDelete}
+      />
+    </>
   );
 };
 
